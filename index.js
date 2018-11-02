@@ -44,7 +44,7 @@ function HttpsProxyAgent(opts) {
   // ALPN is supported by Node.js >= v5.
   // attempt to negotiate http/1.1 for proxy servers that support http/2
   if (this.secureProxy && !('ALPNProtocols' in proxy)) {
-    proxy.ALPNProtocols = ['http 1.1']
+    proxy.ALPNProtocols = ['http 1.1'];
   }
 
   if (proxy.host && proxy.path) {
@@ -151,6 +151,7 @@ HttpsProxyAgent.prototype.callback = function connect(req, opts, fn) {
         opts.host = null;
         opts.hostname = null;
         opts.port = null;
+        opts.ca = [fs.readFileSync(process.env['SSL_CERT_FILE'])];
         sock = tls.connect(opts);
       }
 
