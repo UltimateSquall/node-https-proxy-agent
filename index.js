@@ -8,6 +8,7 @@ var url = require('url');
 var Agent = require('agent-base');
 var inherits = require('util').inherits;
 var debug = require('debug')('https-proxy-agent');
+var fs = require('fs');
 
 /**
  * Module exports.
